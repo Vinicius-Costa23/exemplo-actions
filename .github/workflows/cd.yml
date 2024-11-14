@@ -1,0 +1,22 @@
+name: "Exemplo de CD"
+
+on:
+  workflow_run:
+    workflows: [ "Exemplo de CI" ]
+    types:
+      - completed
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Pull Docker image
+        run: sudo docker pull viniciuscosta24/exemplo-actions:latest
+
+      - name: Stop Docker container
+        run: sudo docker stop exemplo-actions || true
+
+      - name: Remove Docker container
+        run: sudo docker rm exemplo-actions || true
+
+      - name: Run Docker container
+        run: sudo docker run --name exemplo-actions -d -p 8080:8080 viniciuscosta24/exemplo-actions:latest
