@@ -1,6 +1,7 @@
 package sptech.school.exemplo_actions.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +14,8 @@ public class CalculadoraController {
     public CalculadoraController(CalculadoraService calculadoraService) {
         this.calculadoraService = calculadoraService;
     }
-    @PostMapping("/divisão/{a}/{b}")
-    public ResponseEntity<Double>divisao(@PathVariable Double a, Double b){
+    @GetMapping ("/divisão/{a}/{b}")
+    public ResponseEntity<Double>divisao(@PathVariable Double a,@PathVariable Double b){
         return ResponseEntity.ok(calculadoraService.dividir(a, b));
     }
 
