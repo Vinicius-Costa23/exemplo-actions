@@ -14,10 +14,11 @@ public class CalculadoraController {
     public CalculadoraController(CalculadoraService calculadoraService) {
         this.calculadoraService = calculadoraService;
     }
-    @GetMapping ("/divisão/{a}/{b}")
-    public ResponseEntity<Double>divisao(@PathVariable Double a,@PathVariable Double b){
-        return ResponseEntity.ok(calculadoraService.dividir(a, b));
+
+    @GetMapping("/teste/cicd")
+    public ResponseEntity<String> divisao() {
+        return ResponseEntity.ok("ci/cd feito com sucesso");
     }
 
-    }
+}
 
